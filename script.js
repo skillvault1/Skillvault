@@ -4,9 +4,71 @@ let data=[];
 
 function esc(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));}
 function render(){
- const q=(document.querySelector("#search")?.value||"").toLowerCase(), c=document.querySelector("#category")?.value||"all", l=document.querySelector("#location")?.value||"all";
- const items=data.filter(x=>(c==="all"||x.type===c)&&(l==="all"||x.location===l)&&(`${x.name} ${x.org} ${x.desc}`.toLowerCase().includes(q)));
- grid.innerHTML=items.map(x=>`<article class="opp"><div class="opp-top"><span class="opp-type">${esc(labels[x.type]||x.type)}</span><span>✨</span></div><h3>${esc(x.name)}</h3><p>${esc(x.desc)}</p><div class="opp-meta"><span class="pill">${esc(x.org)}</span><span class="pill">${x.location==="remote"?"Remote":x.location==="nigeria"?"Nigeria":"International"}</span><span class="pill">Deadline: ${esc(x.deadline||"Not specified")}</span></div><a href="${esc(x.url||"#")}" target="_blank" rel="noopener">View opportunity →</a></article>`).join("");
+  const q = (document.querySelector("#search")?.value || "").trim().toLowerCase();
+  const c = (document.querySelector("#category")?.value || "all").toLowerCase();
+  const l = (document.querySelector("#location")?.value || "all").toLowerCase();
+
+  const items = data.filter(x => {
+    const type = String(x.type || "").trim().toLowerCase();
+    const location = String(x.location || "").trim().toLowerCase();
+
+    const matchesSearch =
+      !q ||
+      `${x.name || ""} ${x.org || ""} ${x.desc || ""}`
+        .toLowerCase()
+        .includes(q);
+
+    const matchesCategory =
+      c === "all" ||
+      type === c ||
+      type.includes(c) ||
+      c.includes(type);
+
+    const matchesLocation =
+      l === "all" ||
+      location === l ||
+      location.includes(l) ||
+      l.includes(location);
+
+    return matchesSearch && matchesCategory && matchesLocation;
+  });
+
+  grid.innerHTML = items.map(x => {
+    const type = String(x.type || "").trim().toLowerCase();
+    const location = String(x.location || "").trim().toLowerCase();
+
+    const locationLabel =
+      location === "remote"
+        ? "Remote"
+        : location === "nigeria"
+        ? "Nigeria"
+        : "International";
+
+    return `
+      <article class="opp">
+        <div class="opp-top">
+          <span class="opp-type">${esc(labels[type] || x.type || "Opportunity")}</span>
+          <span>✨</span>
+        </div>
+
+        <h3>${esc(x.name)}</h3>
+        <p>${esc(x.desc)}</p>
+
+        <div class="opp-meta">
+          <span class="pill">${esc(x.org)}</span>
+          <span class="pill">${locationLabel}</span>
+          <span class="pill">Deadline: ${esc(x.deadline || "Not specified")}</span>
+        </div>
+
+        <a href="${esc(x.url || "#")}" target="_blank" rel="noopener">
+          View opportunity →
+        </a>
+      </article>
+    `;
+  }).join("");
+
+  empty.hidden = items.length > 0;
+}
  empty.hidden=items.length>0;
 }
 ["search","category","location"].forEach(id=>document.querySelector("#"+id)?.addEventListener("input",render));
