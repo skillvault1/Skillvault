@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SkillVault Admin</title><link rel="stylesheet" href="style.css"><style>
+.admin{max-width:1100px;margin:40px auto;padding:0 4%}.box{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;margin:18px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.grid .full{grid-column:1/-1}input,select,textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:9px}textarea{min-height:100px}.actions{margin-top:12px}.danger{background:#a22;color:#fff}.table{width:100%;border-collapse:collapse}.table th,.table td{padding:10px;border-bottom:1px solid var(--line);text-align:left;font-size:.8rem}.hidden{display:none}.msg{padding:10px;border-radius:8px;background:#eef7f6;margin:10px 0}.opp-admin{display:flex;justify-content:space-between;gap:12px;align-items:center}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.grid .full{grid-column:auto}.table{display:block;overflow:auto}}
+</style></head><body>
+<header><nav class="nav"><a class="brand" href="index.html"><b>S</b><span>Skill<span>Vault</span></span></a><a class="nav-btn" href="index.html">View Site</a></nav></header>
+<main class="admin">
+<section id="loginBox" class="box"><p class="kicker">ADMIN ACCESS</p><h1>SkillVault Admin</h1><p>Sign in with the administrator account.</p>
+<form id="login"><div class="grid"><input id="email" type="email" placeholder="Admin email" required><input id="password" type="password" placeholder="Password" required></div><button class="btn primary" type="submit">Sign in</button><div id="loginMsg"></div></form></section>
+<section id="dashboard" class="hidden">
+<div class="box"><div class="opp-admin"><div><p class="kicker">DASHBOARD</p><h2>Manage SkillVault</h2></div><button id="logout" class="btn light">Log out</button></div><div id="msg" class="msg"></div></div>
+<div class="box"><h2>Add opportunity</h2><form id="oppForm"><div class="grid">
+<input id="title" placeholder="Opportunity title" required><input id="org" placeholder="Organization" required>
+<select id="category" required><option value="">Category</option><option value="scholarship">Scholarship</option><option value="trainee">Graduate Trainee</option><option value="internship">Internship</option><option value="job">Job</option></select>
+<select id="location" required><option value="">Location</option><option value="nigeria">Nigeria</option><option value="international">International</option><option value="remote">Remote</option></select>
+<input id="deadline" type="date"><input id="url" type="url" placeholder="Application URL" required>
+<textarea id="description" class="full" placeholder="Description" required></textarea>
+</div><button class="btn primary" type="submit">Publish opportunity</button></form></div>
+<div class="box"><h2>Current opportunities</h2><div id="opps">Loading...</div></div>
+<div class="box"><h2>Subscribers</h2><div id="subs">Loading...</div></div>
+<div class="box"><h2>Messages</h2><div id="messages">Loading...</div></div>
+</section></main>
+<script src="./config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+let sb,session;
+const $=id=>document.getElementById(id);
+function configured(){return window.SKILLVAULT_SUPABASE_URL?.startsWith("https://")&&!window.SKILLVAULT_SUPABASE_KEY?.includes("PASTE_")}
+async function init(){
+ if(!configured()){$("loginMsg").innerHTML="<p>Open config.js and add your Supabase Project URL and Publishable key first.</p>";return;}
+ sb=supabase.createClient(SKILLVAULT_SUPABASE_URL,SKILLVAULT_SUPABASE_KEY);
+ const {data}=await sb.auth.getSession(); if(data.session) await enter(data.session);
+}
+async function enter(s){
+ session=s; $("loginBox").classList.add("hidden"); $("dashboard").classList.remove("hidden"); await Promise.all([loadOpps(),loadSubs(),loadMessages()]);
+}
+$("login").onsubmit=async e=>{e.preventDefault();$("loginMsg").textContent="Signing in...";const {data,error}=await sb.auth.signInWithPassword({email:$("email").value,password:$("password").value});if(error){$("loginMsg").textContent=error.message;return}await enter(data.session)};
+$("logout").onclick=async()=>{await sb.auth.signOut();location.reload()};
+$("oppForm").onsubmit=async e=>{e.preventDefault();const row={title:$("title").value,organization:$("org").value,category:$("category").value,location:$("location").value,deadline:$("deadline").value||null,application_url:$("url").value,description:$("description").value};const {error}=await sb.from("opportunities").insert(row);$("msg").textContent=error?error.message:"Opportunity published successfully.";if(!error){e.target.reset();loadOpps();}};
+async function loadOpps(){const {data,error}=await sb.from("opportunities").select("*").order("created_at",{ascending:false});$("opps").innerHTML=error?error.message:(data||[]).map(x=>`<div class="opp-admin"><span><b>${x.title||x.name}</b><br><small>${x.organization||x.org||""}</small></span><button class="btn danger" onclick="delOpp('${x.id}')">Delete</button></div>`).join("")||"No opportunities yet."}
+async function delOpp(id){if(!confirm("Delete this opportunity?"))return;const {error}=await sb.from("opportunities").delete().eq("id",id);$("msg").textContent=error?error.message:"Deleted.";loadOpps();}
+async function loadSubs(){const {data,error}=await sb.from("subscribers").select("*").order("created_at",{ascending:false});$("subs").innerHTML=error?error.message:(data||[]).length?`<table class="table"><tr><th>Name</th><th>Email</th><th>Interest</th></tr>${data.map(x=>`<tr><td>${x.name||""}</td><td>${x.email||""}</td><td>${x.interest||""}</td></tr>`).join("")}</table>`:"No subscribers yet."}
+async function loadMessages(){const {data,error}=await sb.from("messages").select("*").order("created_at",{ascending:false});$("messages").innerHTML=error?error.message:(data||[]).length?`<table class="table"><tr><th>Name</th><th>Email</th><th>Message</th></tr>${data.map(x=>`<tr><td>${x.name||""}</td><td>${x.email||""}</td><td>${x.message||x.content||""}</td></tr>`).join("")}</table>`:"No messages yet."}
+init();
+</script></body></html>
