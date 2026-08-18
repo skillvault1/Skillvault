@@ -50,17 +50,6 @@ init();
 let sb = null;
 let session = null;
 
-const $ = (id) => document.getElementById(id);
-
-function configured() {
-  return (
-    typeof window.SKILLVAULT_SUPABASE_URL === "string" &&
-    window.SKILLVAULT_SUPABASE_URL.startsWith("https://") &&
-    typeof window.SKILLVAULT_SUPABASE_KEY === "string" &&
-    window.SKILLVAULT_SUPABASE_KEY.length > 20
-  );
-}
-
 async function init() {
   try {
     if (!configured()) {
