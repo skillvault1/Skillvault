@@ -502,21 +502,48 @@ $("oppForm").addEventListener("submit", async (e) => {
   };
 
 
-  const { error } =
-    await sb
+  let error = null;
+
+
+  if (window.editingOpportunityId) {
+
+    const result = await sb
+      .from("opportunities")
+      .update(row)
+      .eq("id", window.editingOpportunityId);
+
+    error = result.error;
+
+  } else {
+
+    const result = await sb
       .from("opportunities")
       .insert(row);
+
+    error = result.error;
+
+  }
 
 
   $("msg").textContent =
     error
       ? error.message
-      : "Opportunity published successfully.";
+      : (window.editingOpportunityId
+          ? "Opportunity updated successfully."
+          : "Opportunity published successfully.");
 
 
   if (!error) {
 
     e.target.reset();
+
+    window.editingOpportunityId = null;
+
+    const submitButton = e.target.querySelector('button[type="submit"]');
+
+    if (submitButton) {
+      submitButton.textContent = "Publish opportunity";
+    }
 
     await loadOpps();
 
