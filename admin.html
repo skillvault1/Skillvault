@@ -526,15 +526,15 @@ $("oppForm").addEventListener("submit", async (e) => {
 
 
 async function loadOpps() {
+async function loadOpps() {
 
   const { data, error } =
     await sb
       .from("opportunities")
       .select("*")
       .order("created_at", {
-        ascending:false
+        ascending: false
       });
-
 
   $("opps").innerHTML =
     error
@@ -552,12 +552,23 @@ async function loadOpps() {
                 <small>${esc(x.organization || x.org || "")}</small>
               </span>
 
-              <button
-                class="btn danger"
-                onclick="delOpp('${esc(x.id)}')"
-              >
-                Delete
-              </button>
+              <div>
+
+                <button
+                  class="btn light"
+                  onclick="editOpp('${esc(x.id)}')"
+                >
+                  Edit
+                </button>
+
+                <button
+                  class="btn danger"
+                  onclick="delOpp('${esc(x.id)}')"
+                >
+                  Delete
+                </button>
+
+              </div>
 
             </div>
 
@@ -739,6 +750,41 @@ function esc(value) {
 
 
 init();
+
+
+async function editOpp(id) {
+
+  const { data, error } =
+    await sb
+      .from("opportunities")
+      .select("*")
+      .eq("id", id)
+      .single();
+
+  if (error) {
+    $("msg").textContent = error.message;
+    return;
+  }
+
+  $("title").value = data.title || "";
+  $("org").value = data.organization || "";
+  $("category").value = data.category || "";
+  $("location").value = data.location || "";
+  $("deadline").value = data.deadline || "";
+  $("url").value = data.application_url || "";
+  $("description").value = data.description || "";
+
+  $("msg").textContent =
+    "Opportunity loaded. Edit the details above, then publish to save the changes.";
+
+  window.editingOpportunityId = id;
+
+  window.scrollTo({
+    top: $("oppForm").offsetTop - 30,
+    behavior: "smooth"
+  });
+}
+
 
 </script>
 
