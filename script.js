@@ -66,9 +66,6 @@ function render(){
       </article>
     `;
   }).join("");
-
-  empty.hidden = items.length > 0;
-}
  empty.hidden=items.length>0;
 }
 ["search","category","location"].forEach(id=>document.querySelector("#"+id)?.addEventListener("input",render));
