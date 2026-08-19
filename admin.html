@@ -236,8 +236,16 @@ textarea{
 
         </div>
 
-        <button class="btn primary" type="submit">
+        <button id="oppSubmit" class="btn primary" type="submit">
           Publish opportunity
+        </button>
+
+        <button
+          id="cancelEdit"
+          class="btn light hidden"
+          type="button"
+        >
+          Cancel edit
         </button>
 
       </form>
@@ -537,13 +545,7 @@ $("oppForm").addEventListener("submit", async (e) => {
 
     e.target.reset();
 
-    window.editingOpportunityId = null;
-
-    const submitButton = e.target.querySelector('button[type="submit"]');
-
-    if (submitButton) {
-      submitButton.textContent = "Publish opportunity";
-    }
+    clearEditMode();
 
     await loadOpps();
 
@@ -604,6 +606,38 @@ async function loadOpps() {
         || "No opportunities yet.";
 
 }
+
+
+function setEditMode() {
+
+  window.editingOpportunityId = window.editingOpportunityId || null;
+
+  $("oppSubmit").textContent = "Update opportunity";
+  $("cancelEdit").classList.remove("hidden");
+
+}
+
+
+function clearEditMode() {
+
+  window.editingOpportunityId = null;
+
+  $("oppForm").reset();
+
+  $("oppSubmit").textContent = "Publish opportunity";
+  $("cancelEdit").classList.add("hidden");
+
+}
+
+
+$("cancelEdit").addEventListener("click", () => {
+
+  clearEditMode();
+
+  $("msg").textContent =
+    "Edit cancelled.";
+
+});
 
 
 async function delOpp(id) {
@@ -804,6 +838,8 @@ async function editOpp(id) {
     "Opportunity loaded. Edit the details above, then publish to save the changes.";
 
   window.editingOpportunityId = id;
+
+  setEditMode();
 
   window.scrollTo({
     top: $("oppForm").offsetTop - 30,
