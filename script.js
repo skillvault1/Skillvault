@@ -123,3 +123,51 @@ if (subscriberForm) {
 }
 
 loadOpportunities();
+const messageForm = document.querySelector("#messageForm");
+
+if (messageForm) {
+  messageForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const status = document.querySelector("#messageStatus");
+
+    if (!window.sb) {
+      status.textContent =
+        "Unable to send message. Please try again later.";
+      return;
+    }
+
+    const name =
+      document.querySelector("#messageName").value.trim();
+
+    const email =
+      document.querySelector("#messageEmail").value.trim();
+
+    const message =
+      document.querySelector("#messageText").value.trim();
+
+    status.textContent = "Sending...";
+
+    const { error } = await window.sb
+      .from("messages")
+      .insert({
+        name,
+        email,
+        message
+      });
+
+    if (error) {
+      console.error("Message submission error:", error);
+
+      status.textContent =
+        "Unable to send your message. Please try again.";
+
+      return;
+    }
+
+    status.textContent =
+      "Message sent successfully!";
+
+    messageForm.reset();
+  });
+}
