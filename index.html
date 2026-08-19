@@ -72,24 +72,80 @@
 
 <section class="contact section" id="contact">
 <div class="wrap contact-grid">
+
   <div>
     <p class="kicker">CONTACT SKILLVAULT</p>
     <h2>We're here to <span>help.</span></h2>
-    <p class="contact-intro">Have an opportunity to submit, a question about SkillVault, or feedback about the platform? Reach out directly.</p>
+    <p class="contact-intro">
+      Have an opportunity to submit, a question about SkillVault,
+      or feedback about the platform? Send us a message directly.
+    </p>
+
+    <div class="contact-cards">
+
+      <a class="contact-card" href="mailto:adminskillvault@gmail.com">
+        <span class="contact-icon">✉️</span>
+        <span>
+          <small>Email</small>
+          <strong>adminskillvault@gmail.com</strong>
+        </span>
+        <b>↗</b>
+      </a>
+
+      <a class="contact-card"
+         href="https://wa.me/2348130999610"
+         target="_blank"
+         rel="noopener">
+        <span class="contact-icon">💬</span>
+        <span>
+          <small>WhatsApp</small>
+          <strong>+234 813 099 9610</strong>
+        </span>
+        <b>↗</b>
+      </a>
+
+    </div>
   </div>
-  <div class="contact-cards">
-    <a class="contact-card" href="mailto:adminskillvault@gmail.com">
-      <span class="contact-icon">✉️</span>
-      <span><small>Email</small><strong>adminskillvault@gmail.com</strong></span>
-      <b>↗</b>
-    </a>
-    <a class="contact-card" href="https://wa.me/2348130999610" target="_blank" rel="noopener">
-      <span class="contact-icon">💬</span>
-      <span><small>WhatsApp</small><strong>+234 813 099 9610</strong></span>
-      <b>↗</b>
-    </a>
+
+
+  <div class="box">
+
+    <h3>Send us a message</h3>
+
+    <form id="messageForm">
+
+      <input
+        id="messageName"
+        type="text"
+        placeholder="Your full name"
+        required
+      >
+
+      <input
+        id="messageEmail"
+        type="email"
+        placeholder="Your email address"
+        required
+      >
+
+      <textarea
+        id="messageText"
+        placeholder="Write your message..."
+        required
+      ></textarea>
+
+      <button class="btn primary" type="submit">
+        Send Message
+      </button>
+
+      <div id="messageStatus" role="status"></div>
+
+    </form>
+
   </div>
+
 </div>
+</section>
 </section>
 
 <section class="newsletter" id="newsletter">
