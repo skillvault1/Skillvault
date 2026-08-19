@@ -652,9 +652,8 @@ async function loadMessages() {
       .from("messages")
       .select("*")
       .order("created_at", {
-        ascending:false
+        ascending: false
       });
-
 
   $("messages").innerHTML =
     error
@@ -671,6 +670,7 @@ async function loadMessages() {
               <th>Name</th>
               <th>Email</th>
               <th>Message</th>
+              <th>Action</th>
             </tr>
 
             ${data.map(x => `
@@ -682,6 +682,14 @@ async function loadMessages() {
                 <td>${esc(x.email || "")}</td>
 
                 <td>${esc(x.message || x.content || "")}</td>
+
+                <td>
+                  <button
+                    class="btn danger"
+                    onclick="deleteMessage('${x.id}')">
+                    Delete
+                  </button>
+                </td>
 
               </tr>
 
@@ -695,6 +703,26 @@ async function loadMessages() {
 
 }
 
+
+async function deleteMessage(id) {
+
+  if (!confirm("Delete this message?")) return;
+
+  const { error } =
+    await sb
+      .from("messages")
+      .delete()
+      .eq("id", id);
+
+  $("msg").textContent =
+    error
+      ? error.message
+      : "Message deleted successfully.";
+
+  if (!error) {
+    loadMessages();
+  }
+}
 
 function esc(value) {
 
