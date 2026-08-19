@@ -80,11 +80,28 @@ async function loadOpportunities(){
   .select("*")
   .order("created_at", { ascending: false });
    if(error) throw error;
-   data=(rows||[]).map(x=>({
-     id:x.id,name:x.title||x.name,type:x.category||x.type,location:x.location||"nigeria",
-     org:x.organization||x.org||"",desc:x.description||x.desc||"",deadline:x.deadline||"",url:x.application_url||x.url||"#"
-   }));
-   render();
+   data=(rows||[])
+  .map(x=>({
+    id:x.id,
+    name:x.title||x.name,
+    type:x.category||x.type,
+    location:x.location||"nigeria",
+    org:x.organization||x.org||"",
+    desc:x.description||x.desc||"",
+    deadline:x.deadline||"",
+    url:x.application_url||x.url||"#"
+  }))
+  .filter(x => {
+    if (!x.deadline) return true;
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const deadline = new Date(x.deadline + "T00:00:00");
+    return deadline >= today;
+  });
+
+render();
  }catch(e){
    console.error(e);
    data=[];
