@@ -19,7 +19,7 @@
 .form-error{grid-column:1/-1;color:#ffb5b5;font-size:.78rem}
 .privacy-note{grid-column:1/-1;color:#8fa1b0;font-size:.67rem}
 @media(max-width:650px){.newsletter form{grid-template-columns:1fr}.newsletter form select,.newsletter form .primary{grid-column:auto}}
-..brand img {
+.brand img {
   height: 34px;
   width: auto;
   max-width: 150px;
