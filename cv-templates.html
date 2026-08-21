@@ -1,27 +1,102 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Professional CV templates tailored to different fields, careers and job types.">
+
+<meta name="description"
+content="Professional CV templates tailored to different fields, careers and job types.">
+
 <title>CV Templates | SkillVault</title>
+
 <link rel="stylesheet" href="style.css">
 
 <style>
-.cv-page{max-width:1100px;margin:0 auto;padding:60px 4%}
-.cv-hero{text-align:center;max-width:750px;margin:0 auto 45px}
-.cv-hero h1{font-size:clamp(2rem,5vw,3.5rem);margin:10px 0}
-.cv-hero h1 span{color:var(--accent)}
-.cv-hero p{line-height:1.7}
-.cv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.cv-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;transition:.2s}
-.cv-card:hover{transform:translateY(-3px)}
-.cv-icon{font-size:2rem;margin-bottom:12px}
-.cv-card h3{margin:8px 0}
-.cv-card p{font-size:.9rem;line-height:1.6}
-.cv-card .btn{margin-top:10px}
-.coming{font-size:.8rem;font-weight:700}
-  .premium-section{
+
+.cv-page{
+  max-width:1100px;
+  margin:0 auto;
+  padding:60px 4%;
+}
+
+.cv-hero{
+  text-align:center;
+  max-width:750px;
+  margin:0 auto 45px;
+}
+
+.cv-hero h1{
+  font-size:clamp(2rem,5vw,3.5rem);
+  margin:10px 0;
+}
+
+.cv-hero h1 span,
+.cv-hero h2 span{
+  color:var(--accent);
+}
+
+.cv-hero p{
+  line-height:1.7;
+}
+
+.cv-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.cv-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:24px;
+  transition:.2s;
+}
+
+.cv-card:hover{
+  transform:translateY(-3px);
+}
+
+.cv-icon{
+  font-size:2rem;
+  margin-bottom:12px;
+}
+
+.cv-card h3{
+  margin:8px 0;
+}
+
+.cv-card p{
+  font-size:.9rem;
+  line-height:1.6;
+}
+
+.cv-downloads{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:14px;
+}
+
+.cv-downloads .btn{
+  width:100%;
+}
+
+.cv-card .btn{
+  margin-top:10px;
+}
+
+.coming{
+  display:inline-block;
+  font-size:.8rem;
+  font-weight:700;
+  margin-top:12px;
+}
+
+/* PREMIUM */
+
+.premium-section{
   margin-top:70px;
   padding-top:50px;
   border-top:1px solid var(--line);
@@ -63,8 +138,10 @@
 .premium-card .btn{
   width:100%;
 }
-  
-  .services-section{
+
+/* SERVICES */
+
+.services-section{
   margin-top:70px;
   padding-top:50px;
   border-top:1px solid var(--line);
@@ -87,269 +164,619 @@
 .service-card .btn{
   width:100%;
 }
-.back{display:inline-block;margin-bottom:25px}
-@media(max-width:800px){.cv-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:550px){.cv-grid{grid-template-columns:1fr}}
+
+.back{
+  display:inline-block;
+  margin-bottom:25px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:800px){
+
+  .cv-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+@media(max-width:550px){
+
+  .cv-page{
+    padding:45px 5%;
+  }
+
+  .cv-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
+
 <header>
+
 <nav class="nav">
-<a class="brand" href="index.html"><b>S</b><span>Skill<span>Vault</span></span></a>
-<a class="nav-btn" href="index.html">Back to SkillVault</a>
+
+<a class="brand" href="index.html">
+  <b>S</b>
+  <span>Skill<span>Vault</span></span>
+</a>
+
+<a class="nav-btn" href="index.html">
+  Back to SkillVault
+</a>
+
 </nav>
+
 </header>
+
 
 <main class="cv-page">
 
-<a class="back" href="index.html">← Back to Resources</a>
+
+<a class="back" href="index.html">
+  ← Back to Resources
+</a>
+
+
+<!-- HERO -->
 
 <section class="cv-hero">
-<p class="kicker">PROFESSIONAL CV TEMPLATES</p>
-<h1>Build a CV that fits your <span>career.</span></h1>
-<p>
-Explore professional CV templates designed for different fields,
-career levels and job opportunities. More templates will be added regularly.
+
+<p class="kicker">
+  PROFESSIONAL CV TEMPLATES
 </p>
+
+<h1>
+  Build a CV that fits your <span>career.</span>
+</h1>
+
+<p>
+  Explore professional CV templates designed for different fields,
+  career levels and job opportunities. More templates will be added regularly.
+</p>
+
 </section>
 
-<section class="cv-grid"><article class="cv-card">
+
+<!-- FREE CV TEMPLATES -->
+
+<section class="cv-grid">
+
+
+<!-- SCIENCE & LABORATORY -->
+
+<article class="cv-card">
+
 <div class="cv-icon">🧪</div>
-<h3>Science & Laboratory</h3>
-<p>Professional CV templates for chemistry, laboratory science, quality control and related scientific roles.</p>
-<a class="btn primary" href="ADEJOH_OJONUGWA_Science_Laboratory_CV_Sample.docx" download>
-Download CV →
+
+<h3>
+  Science & Laboratory
+</h3>
+
+<p>
+  Professional CV templates for chemistry, laboratory science,
+  quality control and related scientific roles.
+</p>
+
+<a
+  class="btn primary"
+  href="ADEJOH_OJONUGWA_Science_Laboratory_CV_Sample.docx"
+  download>
+  Download CV →
 </a>
+
 </article>
 
-<article class="cv-card">
-<div class="cv-icon">🎓</div>
-<h3>Graduate & Entry Level</h3>
-<p>Professional CV templates designed specifically for students, fresh graduates and entry-level applicants.</p>
-<a class="btn primary" href="ADEJOH_OJONUGWA_General_Graduate_CV_Sample.docx" download>
-Download CV →
-</a>
-</article>
+
+<!-- TECHNOLOGY & SOFTWARE -->
 
 <article class="cv-card">
+
 <div class="cv-icon">💻</div>
-<h3>Technology & Software</h3>
-<p>Professional templates for software developers, IT professionals and technology graduates.</p>
+
+<h3>
+  Technology & Software
+</h3>
+
+<p>
+  Professional templates for software developers,
+  IT professionals and technology graduates.
+</p>
+
 <div class="cv-downloads">
-  <a class="btn primary" href="SkillVault_Technology_Software_Software_Developer_CV.docx" download>Software Developer CV ↓</a>
-  <a class="btn primary" href="SkillVault_Technology_Software_IT_Systems_CV.docx" download>IT & Systems CV ↓</a>
-  <a class="btn primary" href="SkillVault_Technology_Software_Technology_Graduate_CV.docx" download>Technology Graduate CV ↓</a>
+
+<a
+  class="btn primary"
+  href="SkillVault_Technology_Software_Software_Developer_CV.docx"
+  download>
+  Software Developer CV ↓
+</a>
+
+<a
+  class="btn primary"
+  href="SkillVault_Technology_Software_IT_Systems_CV.docx"
+  download>
+  IT & Systems CV ↓
+</a>
+
+<a
+  class="btn primary"
+  href="SkillVault_Technology_Software_Technology_Graduate_CV.docx"
+  download>
+  Technology Graduate CV ↓
+</a>
+
 </div>
+
 </article>
 
+
+<!-- DATA & ANALYTICS -->
+
 <article class="cv-card">
+
 <div class="cv-icon">📊</div>
-<h3>Data & Analytics</h3>
-<p>CV templates for data analysts, researchers, statisticians and analytics professionals.</p>
+
+<h3>
+  Data & Analytics
+</h3>
+
+<p>
+  CV templates for data analysts, researchers,
+  statisticians and analytics professionals.
+</p>
+
 <div class="cv-downloads">
-  <a class="btn primary" href="Data_Analyst_CV.docx" download>Data Analyst CV ↓</a>
-  <a class="btn primary" href="Business_Analyst_CV.docx" download>Business Analyst CV ↓</a>
-  <a class="btn primary" href="Data_and_Analytics_Graduate_CV.docx" download>Data &amp; Analytics Graduate CV ↓</a>
+
+<a
+  class="btn primary"
+  href="Data_Analyst_CV.docx"
+  download>
+  Data Analyst CV ↓
+</a>
+
+<a
+  class="btn primary"
+  href="Business_Analyst_CV.docx"
+  download>
+  Business Analyst CV ↓
+</a>
+
+<a
+  class="btn primary"
+  href="Data_and_Analytics_Graduate_CV.docx"
+  download>
+  Data &amp; Analytics Graduate CV ↓
+</a>
+
 </div>
+
 </article>
 
+
+<!-- BANKING & FINANCE -->
+
 <article class="cv-card">
-  <div class="cv-icon">🏦</div>
-  <h3>Banking & Finance</h3>
-  <p>Professional CV templates designed for banking, finance, accounting and related graduate roles.</p>
 
-  <div class="cv-downloads">
-    <a class="btn primary" href="Two_Column_Sidebar_Banking_Finance_CV_Template.docx" download>
-      Download Two-Column Sidebar CV ↓
-    </a>
+<div class="cv-icon">🏦</div>
 
-    <a class="btn primary" href="Modern_Minimal_Banking_Finance_CV_Template.docx" download>
-      Download Modern Minimal CV ↓
-    </a>
+<h3>
+  Banking & Finance
+</h3>
 
-    <a class="btn primary" href="Classic_Traditional_Banking_Finance_CV_Template.docx" download>
-      Download Classic Traditional CV ↓
-    </a>
-  </div>
+<p>
+  Professional CV templates designed for banking,
+  finance, accounting and related graduate roles.
+</p>
+
+<div class="cv-downloads">
+
+<a
+  class="btn primary"
+  href="Two_Column_Sidebar_Banking_Finance_CV_Template.docx"
+  download>
+  Download Two-Column Sidebar CV ↓
+</a>
+
+<a
+  class="btn primary"
+  href="Modern_Minimal_Banking_Finance_CV_Template.docx"
+  download>
+  Download Modern Minimal CV ↓
+</a>
+
+<a
+  class="btn primary"
+  href="Classic_Traditional_Banking_Finance_CV_Template.docx"
+  download>
+  Download Classic Traditional CV ↓
+</a>
+
+</div>
+
 </article>
-  
+
+
+<!-- ENGINEERING & MANUFACTURING -->
 
 <article class="cv-card">
+
 <div class="cv-icon">🏭</div>
-<h3>Engineering & Manufacturing</h3>
-<p>Professional CV structures for engineering, production, operations and manufacturing careers.</p>
+
+<h3>
+  Engineering & Manufacturing
+</h3>
+
+<p>
+  Professional CV structures for engineering,
+  production, operations and manufacturing careers.
+</p>
+
 <div class="cv-downloads">
-  <a href="Classic_Traditional_Engineering_Manufacturing_CV_Template.docx" download>
-    Download Classic Traditional CV
-  </a>
 
-  <a href="Modern_Minimal_Engineering_Manufacturing_CV_Template.docx" download>
-    Download Modern Minimal CV
-  </a>
+<a
+  class="btn primary"
+  href="Classic_Traditional_Engineering_Manufacturing_CV_Template.docx"
+  download>
+  Download Classic Traditional CV ↓
+</a>
 
-  <a href="Two_Column_Sidebar_Engineering_Manufacturing_CV_Template.docx" download>
-    Download Two-Column Sidebar CV
-  </a>
+<a
+  class="btn primary"
+  href="Modern_Minimal_Engineering_Manufacturing_CV_Template.docx"
+  download>
+  Download Modern Minimal CV ↓
+</a>
+
+<a
+  class="btn primary"
+  href="Two_Column_Sidebar_Engineering_Manufacturing_CV_Template.docx"
+  download>
+  Download Two-Column Sidebar CV ↓
+</a>
+
 </div>
+
 </article>
 
+
+<!-- AGRICULTURE -->
+
 <article class="cv-card">
+
 <div class="cv-icon">🌾</div>
-<h3>Agriculture</h3>
-<p>CV templates for agriculture, agribusiness, food production and related opportunities.</p>
-<span class="coming">Coming soon</span>
+
+<h3>
+  Agriculture
+</h3>
+
+<p>
+  CV templates for agriculture, agribusiness,
+  food production and related opportunities.
+</p>
+
+<span class="coming">
+  Coming soon
+</span>
+
 </article>
 
+
+<!-- HEALTHCARE -->
+
 <article class="cv-card">
+
 <div class="cv-icon">🩺</div>
-<h3>Healthcare</h3>
-<p>Professional CV structures for healthcare, laboratory and health-related careers.</p>
-<span class="coming">Coming soon</span>
+
+<h3>
+  Healthcare
+</h3>
+
+<p>
+  Professional CV structures for healthcare,
+  laboratory and health-related careers.
+</p>
+
+<span class="coming">
+  Coming soon
+</span>
+
 </article>
 
+
+<!-- ADMINISTRATION & HR -->
+
 <article class="cv-card">
+
 <div class="cv-icon">👩‍💼</div>
-<h3>Administration & HR</h3>
-<p>Templates for administrative, human resources, customer service and office roles.</p>
-<span class="coming">Coming soon</span>
+
+<h3>
+  Administration & HR
+</h3>
+
+<p>
+  Templates for administrative, human resources,
+  customer service and office roles.
+</p>
+
+<span class="coming">
+  Coming soon
+</span>
+
 </article>
 
 
 </section>
-  <section class="premium-section">
 
-  <div class="cv-hero">
-    <p class="kicker">⭐ SKILLVAULT PREMIUM</p>
-    <h2>Take your career application to the <span>next level.</span></h2>
-    <p>
-      Get professionally designed CV templates, a tailored cover letter
-      and a practical job application checklist in one complete package.
-    </p>
-  </div>
 
-  <div class="cv-grid">
+<!-- PREMIUM -->
 
-    <article class="cv-card premium-card">
+<section class="premium-section">
 
-      <div class="cv-icon">🏦</div>
 
-      <span class="premium-badge">PREMIUM</span>
+<div class="cv-hero">
 
-      <h3>Banking & Finance Career Pack</h3>
+<p class="kicker">
+  ⭐ SKILLVAULT PREMIUM
+</p>
 
-      <p>
-        A complete application toolkit for banking, finance and accounting
-        graduates and professionals.
-      </p>
+<h2>
+  Take your career application to the <span>next level.</span>
+</h2>
 
-      <ul>
-        <li>Modern Banking CV Template</li>
-        <li>Finance Professional CV Template</li>
-        <li>Accounting CV Template</li>
-        <li>Banking & Finance Cover Letter</li>
-        <li>Job Application Checklist</li>
-      </ul>
+<p>
+  Get professionally designed CV templates, a tailored cover letter
+  and a practical job application checklist in one complete package.
+</p>
 
-      <div class="premium-price">₦2,000</div>
+</div>
 
-      <button class="btn primary" type="button">
-        Get Premium Pack →
-      </button>
 
-    </article>
+<div class="cv-grid">
 
-  </div>
 
-  </section>
-  <section class="services-section">
+<article class="cv-card premium-card">
 
-  <div class="cv-hero">
-    <p class="kicker">🚀 CV SERVICES</p>
+<div class="cv-icon">
+  🏦
+</div>
 
-    <h2>Need help creating your <span>CV?</span></h2>
+<span class="premium-badge">
+  PREMIUM
+</span>
 
-    <p>
-      Get professional help preparing a clear, polished and
-      job-ready application tailored to your career goals.
-    </p>
-  </div>
+<h3>
+  Banking & Finance Career Pack
+</h3>
 
-  <div class="cv-grid">
+<p>
+  A complete application toolkit for banking, finance and accounting
+  graduates and professionals.
+</p>
 
-    <article class="cv-card service-card">
-      <div class="cv-icon">🔍</div>
+<ul>
 
-      <h3>CV Review</h3>
+<li>
+  Modern Banking CV Template
+</li>
 
-      <p>
-        Get your existing CV reviewed with practical recommendations
-        to improve its structure, content and presentation.
-      </p>
+<li>
+  Finance Professional CV Template
+</li>
 
-      <div class="service-price">₦1,500</div>
+<li>
+  Accounting CV Template
+</li>
 
-      <a class="btn primary" href="index.html#contact">
-        Request Service →
-      </a>
-    </article>
+<li>
+  Banking & Finance Cover Letter
+</li>
 
-    <article class="cv-card service-card">
-      <div class="cv-icon">📄</div>
+<li>
+  Job Application Checklist
+</li>
 
-      <h3>Professional CV</h3>
+</ul>
 
-      <p>
-        Get a professionally structured CV tailored to your
-        target role, experience and career direction.
-      </p>
+<div class="premium-price">
+  ₦2,000
+</div>
 
-      <div class="service-price">₦5,000</div>
+<button
+  class="btn primary"
+  type="button">
+  Get Premium Pack →
+</button>
 
-      <a class="btn primary" href="index.html#contact">
-        Request Service →
-      </a>
-    </article>
+</article>
 
-    <article class="cv-card service-card">
-      <div class="cv-icon">📩</div>
 
-      <h3>CV + Cover Letter</h3>
+</div>
 
-      <p>
-        Get a professionally prepared CV together with a
-        tailored cover letter for your job application.
-      </p>
+</section>
 
-      <div class="service-price">₦7,000</div>
 
-      <a class="btn primary" href="index.html#contact">
-        Request Service →
-      </a>
-    </article>
+<!-- CV SERVICES -->
 
-  </div>
+<section class="services-section">
 
-  </section>
+
+<div class="cv-hero">
+
+<p class="kicker">
+  🚀 CV SERVICES
+</p>
+
+<h2>
+  Need help creating your <span>CV?</span>
+</h2>
+
+<p>
+  Get professional help preparing a clear, polished and
+  job-ready application tailored to your career goals.
+</p>
+
+</div>
+
+
+<div class="cv-grid">
+
+
+<!-- CV REVIEW -->
+
+<article class="cv-card service-card">
+
+<div class="cv-icon">
+  🔍
+</div>
+
+<h3>
+  CV Review
+</h3>
+
+<p>
+  Get your existing CV reviewed with practical recommendations
+  to improve its structure, content and presentation.
+</p>
+
+<div class="service-price">
+  ₦1,500
+</div>
+
+<a
+  class="btn primary"
+  href="index.html#contact">
+  Request Service →
+</a>
+
+</article>
+
+
+<!-- PROFESSIONAL CV -->
+
+<article class="cv-card service-card">
+
+<div class="cv-icon">
+  📄
+</div>
+
+<h3>
+  Professional CV
+</h3>
+
+<p>
+  Get a professionally structured CV tailored to your
+  target role, experience and career direction.
+</p>
+
+<div class="service-price">
+  ₦5,000
+</div>
+
+<a
+  class="btn primary"
+  href="index.html#contact">
+  Request Service →
+</a>
+
+</article>
+
+
+<!-- CV + COVER LETTER -->
+
+<article class="cv-card service-card">
+
+<div class="cv-icon">
+  📩
+</div>
+
+<h3>
+  CV + Cover Letter
+</h3>
+
+<p>
+  Get a professionally prepared CV together with a
+  tailored cover letter for your job application.
+</p>
+
+<div class="service-price">
+  ₦7,000
+</div>
+
+<a
+  class="btn primary"
+  href="index.html#contact">
+  Request Service →
+</a>
+
+</article>
+
+
+</div>
+
+</section>
+
 
 </main>
 
+
+<!-- FOOTER -->
+
 <footer>
+
 <div class="wrap footer">
+
 <div>
-<a class="brand" href="index.html"><b>S</b><span>Skill<span>Vault</span></span></a>
-<p>Skills, resources and opportunities for your growth.</p>
+
+<a class="brand" href="index.html">
+  <b>S</b>
+  <span>Skill<span>Vault</span></span>
+</a>
+
+<p>
+  Skills, resources and opportunities for your growth.
+</p>
+
 </div>
+
+
 <div class="footlinks">
-<a href="index.html#opportunities">Opportunities</a>
-<a href="index.html#products">Resources</a>
-<a href="index.html#about">About</a>
-<a href="index.html#contact">Contact</a>
+
+<a href="index.html#opportunities">
+  Opportunities
+</a>
+
+<a href="index.html#products">
+  Resources
+</a>
+
+<a href="index.html#about">
+  About
+</a>
+
+<a href="index.html#contact">
+  Contact
+</a>
+
 </div>
+
 </div>
-<div class="wrap copyright">© 2026 SkillVault. All rights reserved.</div>
+
+
+<div class="wrap copyright">
+  © 2026 SkillVault. All rights reserved.
+</div>
+
 </footer>
 
+
 </body>
-  </html>
+
+</html>
