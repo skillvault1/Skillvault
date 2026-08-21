@@ -19,13 +19,27 @@
 .form-error{grid-column:1/-1;color:#ffb5b5;font-size:.78rem}
 .privacy-note{grid-column:1/-1;color:#8fa1b0;font-size:.67rem}
 @media(max-width:650px){.newsletter form{grid-template-columns:1fr}.newsletter form select,.newsletter form .primary{grid-column:auto}}
-.brand img {
-  height: 46px;
+..brand img {
+  height: 34px;
   width: auto;
+  max-width: 150px;
   display: block;
   object-fit: contain;
 }
 
 footer .brand img {
-  height: 52px;
+  height: 40px;
+  max-width: 170px;
+}
+
+@media (max-width: 700px) {
+  .brand img {
+    height: 30px;
+    max-width: 130px;
+  }
+
+  footer .brand img {
+    height: 36px;
+    max-width: 150px;
+  }
 }
